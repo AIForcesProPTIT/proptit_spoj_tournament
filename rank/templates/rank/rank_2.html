@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load mathfilters %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/proptit.png' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+    <title>SPOJ TOURNAMENT</title>
+</head>
+<body>
+    <ul class="col-md-4">
+        <div class="bs-sliderbar">
+            <ul class="nav flex-row">
+                <b style="color: gray" class="col-md-4">Rank</b>
+                <br>
+                <br>
+                <a style="color: gray" href="list" class="col-md-4">Problems</a>
+                <br>
+                <br>
+                <a style="color: gray" href="compare" class="col-md-4">Comparing Tool</a>
+            </ul>
+        </div>
+    </ul>
+    <br>
+    <div class="rank top1">
+        <div class="kinn" style="width: 240px; height: 240px; top: 13%; left: -10.3%;">
+            <img src="{% static 'images/rank/1.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.0.name}}/">{{list_user.0.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.0.rank == 0 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.0.rank < 0 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.0.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.0.rank > 0 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.0.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.0.solved_num}}</p>
+            <p>Progress: {{list_user.0.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>01</p></div>
+
+    </div>
+    <!-- 2 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/2.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/2.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.1.name}}/">{{list_user.1.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.1.rank == 1 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.1.rank < 1 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.1.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.1.rank > 1 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.1.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.1.solved_num}}</p>
+            <p>Progress: {{list_user.1.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>02</p></div>
+    </div>
+    <!-- 3 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/3.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/3.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.2.name}}/">{{list_user.2.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.2.rank == 2 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.2.rank < 2 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.2.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.2.rank > 2 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.2.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.2.solved_num}}</p>
+            <p>Progress: {{list_user.2.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>03</p></div>
+    </div>
+    <!-- 4 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/4.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/4.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.3.name}}/">{{list_user.3.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.3.rank == 3 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.3.rank < 3 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.3.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.3.rank > 3 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.3.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.3.solved_num}}</p>
+            <p>Progress: {{list_user.3.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>04</p></div>
+    </div>
+    <!-- 5 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/5.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/4.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.4.name}}/">{{list_user.4.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.4.rank == 4 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.4.rank < 4 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.4.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.4.rank > 4 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.4.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.4.solved_num}}</p>
+            <p>Progress: {{list_user.4.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>05</p></div>
+    </div>
+    <!-- 6 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/6.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/5.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.5.name}}/">{{list_user.5.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.5.rank == 5 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.5.rank < 5 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.5.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.5.rank > 5 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.5.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.5.solved_num}}</p>
+            <p>Progress: {{list_user.5.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>06</p></div>
+    </div>
+    <!-- 7 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/7.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/5.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.6.name}}/">{{list_user.6.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.6.rank == 6 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.6.rank < 6 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.6.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.6.rank > 6 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.6.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.6.solved_num}}</p>
+            <p>Progress: {{list_user.6.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>07</p></div>
+    </div>
+    <!-- 8 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/8.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/5.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.7.name}}/">{{list_user.7.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.7.rank == 7 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.7.rank < 7 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.7.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.7.rank > 7 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.7.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.7.solved_num}}</p>
+            <p>Progress: {{list_user.7.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>08</p></div>
+    </div>
+    <!-- 9 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/9.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/5.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.8.name}}/">{{list_user.8.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.8.rank == 8 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.8.rank < 8 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.8.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.8.rank > 8 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.8.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.8.solved_num}}</p>
+            <p>Progress: {{list_user.8.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>09</p></div>
+    </div>
+    <!-- 10 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/10.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.9.name}}/">{{list_user.9.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.9.rank == 9 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.9.rank < 9 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.9.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.9.rank > 9 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.9.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.9.solved_num}}</p>
+            <p>Progress: {{list_user.9.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>10</p></div>
+    </div>
+    <!-- 11 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/11.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.10.name}}/">{{list_user.10.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.10.rank == 10 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.10.rank < 10 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.10.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.10.rank > 10 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.10.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.10.solved_num}}</p>
+            <p>Progress: {{list_user.10.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>11</p></div>
+    </div>
+    <!-- 12 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/12.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.11.name}}/">{{list_user.11.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.11.rank == 11 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.11.rank < 11 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.11.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.11.rank > 11 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.11.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.11.solved_num}}</p>
+            <p>Progress: {{list_user.11.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>12</p></div>
+    </div>
+    <!-- 13 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/13.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.12.name}}/">{{list_user.12.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.12.rank == 12 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.12.rank < 12 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.12.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.12.rank > 12 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.12.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.12.solved_num}}</p>
+            <p>Progress: {{list_user.12.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>13</p></div>
+    </div>
+    <!-- 14 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/14.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.13.name}}/">{{list_user.13.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.13.rank == 13 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.13.rank < 13 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.13.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.13.rank > 13 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.13.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.13.solved_num}}</p>
+            <p>Progress: {{list_user.13.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>14</p></div>
+    </div>
+    <!-- 15 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/15.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/6.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.14.name}}/">{{list_user.14.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.14.rank == 14 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.14.rank < 14 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.14.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.14.rank > 14 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.14.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.14.solved_num}}</p>
+            <p>Progress: {{list_user.14.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>15</p></div>
+    </div>
+    <!-- 16 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/16.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.15.name}}/">{{list_user.15.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.15.rank == 15 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.15.rank < 15 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.15.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.15.rank > 15 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.15.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.15.solved_num}}</p>
+            <p>Progress: {{list_user.15.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>16</p></div>
+    </div>
+    <!-- 17 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/17.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.16.name}}/">{{list_user.16.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.16.rank == 16 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.16.rank < 16 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.16.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.16.rank > 16 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.16.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.16.solved_num}}</p>
+            <p>Progress: {{list_user.16.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>17</p></div>
+    </div>
+    <!-- 18 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/18.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.17.name}}/">{{list_user.17.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.17.rank == 17 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.17.rank < 17 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.17.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.17.rank > 17 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.17.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.17.solved_num}}</p>
+            <p>Progress: {{list_user.17.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>18</p></div>
+    </div>
+    <!-- 19 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/19.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.18.name}}/">{{list_user.18.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.18.rank == 18 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.18.rank < 18 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.18.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.18.rank > 18 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.18.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.18.solved_num}}</p>
+            <p>Progress: {{list_user.18.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>19</p></div>
+    </div>
+    <!-- 20 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/20.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.19.name}}/">{{list_user.19.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.19.rank == 19 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.19.rank < 19 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.19.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.19.rank > 19 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.19.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.19.solved_num}}</p>
+            <p>Progress: {{list_user.19.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>20</p></div>
+    </div>
+    <!-- 21 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/21.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.20.name}}/">{{list_user.20.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.20.rank == 20 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.20.rank < 20 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.20.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.20.rank > 20 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.20.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.20.solved_num}}</p>
+            <p>Progress: {{list_user.20.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>21</p></div>
+    </div>
+    <!-- 22 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/22.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.21.name}}/">{{list_user.21.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.21.rank == 21 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.21.rank < 21 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.21.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.21.rank > 21 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.21.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.21.solved_num}}</p>
+            <p>Progress: {{list_user.21.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>22</p></div>
+    </div>
+    <!-- 23 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/23.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/7.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.22.name}}/">{{list_user.22.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.22.rank == 22 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.22.rank < 22 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.22.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.22.rank > 22 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.22.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.22.solved_num}}</p>
+            <p>Progress: {{list_user.22.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>23</p></div>
+    </div>
+    <!-- 24 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/24.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/8.png' %}" alt="=))">
+        </div>
+       <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.23.name}}/">{{list_user.23.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.23.rank == 23 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.23.rank < 23 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.23.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.23.rank > 23 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.23.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.23.solved_num}}</p>
+            <p>Progress: {{list_user.23.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>24</p></div>
+    </div>
+    <!-- 25 -->
+    <div class="rank top2" style="background-image: url({% static 'images/champ/25.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/9.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.24.name}}/">{{list_user.24.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.24.rank == 24 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.24.rank < 24 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.24.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.24.rank > 24 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.24.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.24.solved_num}}</p>
+            <p>Progress: {{list_user.24.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>25</p></div>
+    </div>
+    <div class="rank top2" style="background-image: url({% static 'images/champ/25.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/9.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.25.name}}/">{{list_user.25.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.25.rank == 25 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.25.rank < 25 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.25.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.25.rank > 25 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.25.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.25.solved_num}}</p>
+            <p>Progress: {{list_user.25.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>26</p></div>
+    </div>
+    <div class="rank top2" style="background-image: url({% static 'images/champ/25.jpg' %});">
+        <div class="kinn">
+            <img src="{% static 'images/rank/9.png' %}" alt="=))">
+        </div>
+        <div class="name"><p><a href="https://www.spoj.com/PTIT/users/{{list_user.26.name}}/">{{list_user.26.user_name}}</a></p></div>
+        <div class="info">
+            {% if list_user.26.rank == 26 %}
+                <i class="right-border" style="color: green;"></i><p style="display: inline;">-</p>
+            {% endif %}
+            {% if list_user.26.rank < 26 %}
+                <i class="fa fa-arrow-down" style="color: red;"></i><p style="display: inline;">{{list_user.26.rank|mul:-1}}</p>
+            {% endif %}
+            {% if list_user.26.rank > 26 %}
+                <i class="fa fa-arrow-up" style="color: green;"></i><p style="display: inline;">{{list_user.26.rank}}</p>
+            {% endif %}
+            <p>Solved: {{list_user.26.solved_num}}</p>
+            <p>Progress: {{list_user.26.progress_percentage}}%</p>
+        </div>
+        <div class="number"><p>27</p></div>
+    </div>
+</body>
+</html>
+
+<style>
+
+</style>
