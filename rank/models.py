@@ -4,9 +4,9 @@ from .utils import DataProcessor
 # Create your models here.
 class User(models.Model):
     solved_num = models.IntegerField()
-    user_name = models.CharField("user name", default="duchanhctn99", max_length=100)
-    name = models.CharField("name", default="name", max_length=100)
-    user_url = models.CharField("url", default="/", max_length=100)
+    user_name = models.CharField("user name", default="user name", max_length=100)
+    name = models.CharField("name", default="name hien thi nhe", max_length=100)
+    user_url = models.CharField("url", default="/https://www.spoj.com/PTIT/users/meoconxinhxan/", max_length=100)
     target = models.IntegerField(default = 1)
     lastrank = models.IntegerField(default = 1)
 
